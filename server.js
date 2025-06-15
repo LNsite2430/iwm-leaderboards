@@ -1,14 +1,15 @@
 // server.js
 const express = require('express');
 const path = require('path');
+const cors = require('cors');
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
-// If using Node 18+, global fetch should be available by default,
-// but if it causes errors, try the dynamic import below.
-if (typeof fetch !== 'function') {
-  global.fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
-}
+// Enable CORS (if needed)
+app.use(cors());
+
+// Serve static files from 'public'
+app.use(express.static(path.join(__dirname, 'public')));
 
 const leaderboardCodes = {
     "Clears": "clears",
@@ -26,9 +27,6 @@ const leaderboardCodes = {
     "Hardcore Roulette": "hardcore"
 };
 
-// Serve static files
-app.use(express.static(path.join(__dirname, 'public')));
-
 app.get('/api/leaderboard/:type', async (req, res) => {
     const code = leaderboardCodes[req.params.type];
     if (!code) {
@@ -36,7 +34,8 @@ app.get('/api/leaderboard/:type', async (req, res) => {
     }
 
     try {
-        const response = await fetch(`http://make.fangam.es/api/v1/leaderboard?type=${code}&start=0&limit=50&userId=-1`);
+        // Use https for external API
+        const response = await fetch(`https://make.fangam.es/api/v1/leaderboard?type=${code}&start=0&limit=50&userId=-1`);
         if (response.status === 200) {
             const data = await response.json();
             res.json(data);
