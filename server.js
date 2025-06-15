@@ -2,7 +2,8 @@
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
-const fetch = require('node-fetch'); // ← 追加！
+const fetch = require('node-fetch');
+app.use(express.static('public'));
 
 const app = express();
 const PORT = process.env.PORT || 3000;
