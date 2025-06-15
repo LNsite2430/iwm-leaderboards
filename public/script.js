@@ -45,13 +45,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Logo image path and size settings
   const leaderboardLogos = {
-    "Clears":      { src: "logos/clears.png",            width: 120, height: 60 },
-    "Records":     { src: "logos/records.png",           width: 120, height: 60 },
-    "Explorer":    { src: "logos/explorer.png",          width: 120, height: 60 },
-    "Skribble":    { src: "logos/skribble.png",          width: 180, height: 60 },
-    "Endurance":   { src: "logos/endurance.png",         width: 180, height: 60 },
-    "Roulette":    { src: "logos/roulette.png",          width: 120, height: 60 },
-    "Hardcore Roulette": { src: "logos/hardcore_roulette.png", width: 160, height: 60 }
+    "Clears":      { src: "/logos/clears.png",            width: 120, height: 60 },
+    "Records":     { src: "/logos/records.png",           width: 120, height: 60 },
+    "Explorer":    { src: "/logos/explorer.png",          width: 120, height: 60 },
+    "Skribble":    { src: "/logos/skribble.png",          width: 180, height: 60 },
+    "Endurance":   { src: "/logos/endurance.png",         width: 180, height: 60 },
+    "Roulette":    { src: "/logos/roulette.png",          width: 120, height: 60 },
+    "Hardcore Roulette": { src: "/logos/hardcore_roulette.png", width: 160, height: 60 }
   };
 
   // Get logo and sub text info
