@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>IWM Leaderboards</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="leaderboard-controls">
+    <label for="leaderboard">Leaderboard</label>
+    <select id="leaderboard">
+      <option>Clears</option>
+      <option>Records</option>
+      <option>Explorer</option>
+      <option>Skribble Easy</option>
+      <option>Skribble Medium</option>
+      <option>Skribble Hard</option>
+      <option>Skribble Impossible</option>
+      <option selected>Endurance Easy</option>
+      <option>Endurance Medium</option>
+      <option>Endurance Hard</option>
+      <option>Endurance Impossible</option>
+      <option>Roulette</option>
+      <option>Hardcore Roulette</option>
+    </select>
+  </div>
+  <!-- Logo area -->
+  <div id="leaderboard-logo-area">
+    <!-- Logo image and sub text will be inserted here -->
+  </div>
+  <div class="leaderboard-panel">
+    <div class="table-scroll">
+      <table id="results">
+        <thead>
+          <tr><th>#</th><th>Username</th><th>Score</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+  <script src="public/script.js"></script>
+</body>
+</html>
