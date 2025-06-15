@@ -1,19 +1,19 @@
 /* Font faces */
 @font-face {
   font-family: 'FutureKid';
-  src: url('FutureKid.ttf') format('truetype');
+  src: url('fonts/FutureKid.ttf') format('truetype');
 }
 @font-face {
   font-family: 'NotoSans-Medium';
-  src: url('NotoSansJP-Medium.ttf') format('truetype');
+  src: url('fonts/NotoSansJP-Medium.ttf') format('truetype');
 }
 @font-face {
   font-family: 'ONE Mobile POP';
-  src: url('ONEMobilePOP.ttf') format('truetype');
+  src: url('fonts/ONEMobilePOP.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Mplus1-Bold';
-  src: url('Mplus1-Bold.ttf') format('truetype');
+  src: url('fonts/Mplus1-Bold.ttf') format('truetype');
 }
 
 /* Apply 2px black outline (text-shadow) and white color to all text */
