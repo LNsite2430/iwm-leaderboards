@@ -3,13 +3,13 @@ const express = require('express');
 const path = require('path');
 const cors = require('cors');
 const fetch = require('node-fetch');
-app.use(express.static('public'));
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Enable CORS
 app.use(cors());
+app.use(express.static('public'));
 
 // Serve static files from 'public'
 app.use(express.static(path.join(__dirname, 'public')));
