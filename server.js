@@ -1,20 +1,14 @@
-// server.js
 const express = require('express');
 const path = require('path');
 const cors = require('cors');
-const fetch = require('node-fetch');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Enable CORS
 app.use(cors());
 app.use(express.static('public'));
-
-// Serve static files from 'public'
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Leaderboard type mapping
 const leaderboardCodes = {
     "Clears": "clears",
     "Records": "records",
@@ -31,7 +25,6 @@ const leaderboardCodes = {
     "Hardcore Roulette": "hardcore"
 };
 
-// API route
 app.get('/api/leaderboard/:type', async (req, res) => {
     const code = leaderboardCodes[req.params.type];
     if (!code) {
@@ -39,6 +32,8 @@ app.get('/api/leaderboard/:type', async (req, res) => {
     }
 
     try {
+        // node-fetchを動的インポート
+        const fetch = (await import('node-fetch')).default;
         const response = await fetch(`https://make.fangam.es/api/v1/leaderboard?type=${code}&start=0&limit=50&userId=-1`);
         if (response.status === 200) {
             const data = await response.json();
@@ -52,9 +47,7 @@ app.get('/api/leaderboard/:type', async (req, res) => {
     }
 });
 
-// Start server
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });
-
 
