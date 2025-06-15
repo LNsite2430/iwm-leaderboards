@@ -102,9 +102,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Initial logo display
-  updateLeaderboardLogo(select.value);
-
   // Update logo on select change
   select.addEventListener('change', e => {
     updateLeaderboardLogo(e.target.value);
