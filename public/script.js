@@ -33,81 +33,74 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Initial display on page load
+  // 初期表示
   fetchLeaderboard(select.value);
+  updateLeaderboardLogo(select.value); // ←これを追加
 
-  // Update leaderboard when selection changes
+  // セレクト変更時
   select.addEventListener('change', () => {
     fetchLeaderboard(select.value);
+    updateLeaderboardLogo(select.value); // ←これも同時に
   });
 });
 
+// ロゴ設定などはそのまま
+const leaderboardLogos = {
+  "Clears":      { src: "/logos/clears.png",            width: 120, height: 60 },
+  "Records":     { src: "/logos/records.png",           width: 120, height: 60 },
+  "Explorer":    { src: "/logos/explorer.png",          width: 120, height: 60 },
+  "Skribble":    { src: "/logos/skribble.png",          width: 180, height: 60 },
+  "Endurance":   { src: "/logos/endurance.png",         width: 180, height: 60 },
+  "Roulette":    { src: "/logos/roulette.png",          width: 120, height: 60 },
+  "Hardcore Roulette": { src: "/logos/hardcore_roulette.png", width: 160, height: 60 }
+};
 
-  // Logo image path and size settings
-  const leaderboardLogos = {
-    "Clears":      { src: "/logos/clears.png",            width: 120, height: 60 },
-    "Records":     { src: "/logos/records.png",           width: 120, height: 60 },
-    "Explorer":    { src: "/logos/explorer.png",          width: 120, height: 60 },
-    "Skribble":    { src: "/logos/skribble.png",          width: 180, height: 60 },
-    "Endurance":   { src: "/logos/endurance.png",         width: 180, height: 60 },
-    "Roulette":    { src: "/logos/roulette.png",          width: 120, height: 60 },
-    "Hardcore Roulette": { src: "/logos/hardcore_roulette.png", width: 160, height: 60 }
-  };
-
-  // Get logo and sub text info
-  function getLogoInfo(type) {
-    if (type.startsWith("Skribble")) {
-      return {
-        ...leaderboardLogos["Skribble"],
-        sub: type.replace("Skribble ", "")
-      };
-    }
-    if (type.startsWith("Endurance")) {
-      return {
-        ...leaderboardLogos["Endurance"],
-        sub: type.replace("Endurance ", "")
-      };
-    }
+function getLogoInfo(type) {
+  if (type.startsWith("Skribble")) {
     return {
-      ...(leaderboardLogos[type] || {}),
-      sub: ""
+      ...leaderboardLogos["Skribble"],
+      sub: type.replace("Skribble ", "")
     };
   }
-
-  // Update logo area
-  function updateLeaderboardLogo(type) {
-    const logoArea = document.getElementById('leaderboard-logo-area');
-    logoArea.innerHTML = '';
-    const { src, width, height, sub } = getLogoInfo(type);
-    if (src) {
-      const img = document.createElement('img');
-      img.src = src;
-      img.alt = type + " logo";
-      img.style.width = width ? width + "px" : "auto";
-      img.style.height = height ? height + "px" : "auto";
-      img.style.objectFit = "contain";
-      logoArea.appendChild(img);
-    }
-    if (sub) {
-      const subText = document.createElement('div');
-      subText.textContent = sub;
-      subText.style.fontFamily = "'FutureKid', 'Segoe UI', 'Arial', sans-serif";
-      subText.style.fontSize = "22px";
-      subText.style.color = "#fff";
-      subText.style.fontWeight = "bold";
-      subText.style.marginTop = "2px";
-      // 2px black outline, only up/down/left/right
-      subText.style.textShadow = "2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000";
-      logoArea.appendChild(subText);
-    }
+  if (type.startsWith("Endurance")) {
+    return {
+      ...leaderboardLogos["Endurance"],
+      sub: type.replace("Endurance ", "")
+    };
   }
+  return {
+    ...(leaderboardLogos[type] || {}),
+    sub: ""
+  };
+}
 
-  // Update logo on select change
-  select.addEventListener('change', e => {
-    updateLeaderboardLogo(e.target.value);
-  });
+function updateLeaderboardLogo(type) {
+  const logoArea = document.getElementById('leaderboard-logo-area');
+  logoArea.innerHTML = '';
+  const { src, width, height, sub } = getLogoInfo(type);
+  if (src) {
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = type + " logo";
+    img.style.width = width ? width + "px" : "auto";
+    img.style.height = height ? height + "px" : "auto";
+    img.style.objectFit = "contain";
+    logoArea.appendChild(img);
+  }
+  if (sub) {
+    const subText = document.createElement('div');
+    subText.textContent = sub;
+    subText.style.fontFamily = "'FutureKid', 'Segoe UI', 'Arial', sans-serif";
+    subText.style.fontSize = "22px";
+    subText.style.color = "#fff";
+    subText.style.fontWeight = "bold";
+    subText.style.marginTop = "2px";
+    subText.style.textShadow = "2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000";
+    logoArea.appendChild(subText);
+  }
+}
 
-  // Username font class utility (for your leaderboard rendering logic)
+// フォントクラスユーティリティ
 function getFontClass(username, lang) {
   if (/[!-/:-@[-`{-~]/.test(username)) return 'font-mplus';
   if (/[ぁ-んァ-ン一-龥]/.test(username)) return 'font-noto';
