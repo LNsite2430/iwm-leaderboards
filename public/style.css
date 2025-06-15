@@ -1,0 +1,192 @@
+/* Font faces */
+@font-face {
+  font-family: 'FutureKid';
+  src: url('FutureKid.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'NotoSans-Medium';
+  src: url('NotoSansJP-Medium.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'ONE Mobile POP';
+  src: url('ONEMobilePOP.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Mplus1-Bold';
+  src: url('Mplus1-Bold.ttf') format('truetype');
+}
+
+/* Apply 2px black outline (text-shadow) and white color to all text */
+body, body * {
+  color: #fff !important;
+  text-shadow:
+    2px 0 0 #000,
+   -2px 0 0 #000,
+    0 2px 0 #000,
+    0 -2px 0 #000;
+  font-family: 'FutureKid', 'Segoe UI', 'Arial', sans-serif;
+}
+
+/* Make the select box display text black and bold, no outline */
+select {
+  color: #000 !important;
+  font-weight: bold !important;
+  text-shadow: none !important;
+}
+
+/* Make the dropdown options text black and bold, no outline */
+select option {
+  color: #000 !important;
+  font-weight: bold !important;
+  text-shadow: none !important;
+}
+
+/* Background and layout */
+body {
+  min-height: 100vh;
+  min-width: 100vw;
+  margin: 0;
+  padding: 0;
+  background: #000;
+  position: relative;
+  overflow: hidden;
+  background-image: url('background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.leaderboard-panel {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 600px;
+  background: rgba(255,255,255,0.35);
+  border-radius: 0;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.leaderboard-controls {
+  position: absolute;
+  top: 24px;
+  right: 48px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  z-index: 2;
+}
+
+.leaderboard-controls label {
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: 6px;
+  text-shadow:
+    2px 0 0 #000,
+   -2px 0 0 #000,
+    0 2px 0 #000,
+    0 -2px 0 #000;
+}
+
+.table-scroll {
+  max-height: 550px;
+  overflow-y: auto;
+  width: 80%;
+  margin: 0 auto;
+}
+
+/* Logo area */
+#leaderboard-logo-area {
+  position: absolute;
+  left: 50%;
+  top: 7%;
+  transform: translate(-50%,0);
+  width: 300px;
+  height: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Table styles */
+table {
+  border-collapse: separate;
+  border-spacing: 0 8px;
+  width: 100%;
+  margin-top: 0;
+  background: none;
+}
+th, td {
+  background: none;
+  border: none;
+  padding: 8px 12px;
+  text-align: left;
+  font-size: 24px;
+  border-radius: 0;
+  color: #fff;
+  font-family: 'FutureKid', 'Segoe UI', 'Arial', sans-serif;
+}
+th {
+  display: none;
+}
+tr {
+  transition: background 0.2s;
+}
+tr:hover td {
+  background: #e0e0e0a0;
+}
+
+/* Scrollbar styles */
+.table-scroll::-webkit-scrollbar {
+  width: 32px;
+  background: transparent;
+}
+.table-scroll::-webkit-scrollbar-thumb {
+  background: #4a4a7a;
+  border: 4px solid #bfc7e0;
+  border-radius: 12px;
+  min-height: 40px;
+  box-shadow: 0 0 0 2px #222, inset 0 0 6px #2228;
+  position: relative;
+}
+.table-scroll::-webkit-scrollbar-thumb:after {
+  content: "";
+  display: block;
+  margin: 6px auto;
+  width: 18px;
+  height: 24px;
+  background: linear-gradient(
+    to bottom,
+    #bfc7e0 0%,
+    #bfc7e0 80%,
+    #aab2c0 100%
+  );
+  border-radius: 8px;
+  box-shadow: 0 0 0 2px #222;
+  position: relative;
+  left: 2px;
+}
+.table-scroll::-webkit-scrollbar-track {
+  background: #4a4a7a;
+  border-left: 2px solid #222;
+  border-right: 2px solid #222;
+  box-shadow: 0 0 0 1px #222;
+}
+/* Firefox scrollbar */
+.table-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #4a4a7a #bfc7e0;
+}
+
+/* Username font classes */
+.font-noto { font-family: 'NotoSans-Medium', sans-serif !important; }
+.font-one { font-family: 'ONE Mobile POP', sans-serif !important; }
+.font-mplus { font-family: 'Mplus1-Bold', sans-serif !important; }
