@@ -46,13 +46,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // ロゴ設定などはそのまま
 const leaderboardLogos = {
-  "Clears":      { src: "/logos/clears.png",            width: 120, height: 60 },
-  "Records":     { src: "/logos/records.png",           width: 120, height: 60 },
-  "Explorer":    { src: "/logos/explorer.png",          width: 120, height: 60 },
-  "Skribble":    { src: "/logos/skribble.png",          width: 180, height: 60 },
-  "Endurance":   { src: "/logos/endurance.png",         width: 180, height: 60 },
-  "Roulette":    { src: "/logos/roulette.png",          width: 120, height: 60 },
-  "Hardcore Roulette": { src: "/logos/hardcore_roulette.png", width: 160, height: 60 }
+  "Clears":      { src: "/logos/clears.png",            width: 300, height: 150 },
+  "Records":     { src: "/logos/records.png",           width: 300, height: 150 },
+  "Explorer":    { src: "/logos/explorer.png",          width: 300, height: 150 },
+  "Skribble":    { src: "/logos/skribble.png",          width: 240, height: 120 },
+  "Endurance":   { src: "/logos/endurance.png",         width: 300, height: 150 },
+  "Roulette":    { src: "/logos/roulette.png",          width: 300, height: 150 },
+  "Hardcore Roulette": { src: "/logos/hardcore_roulette.png", width: 300, height: 150 }
 };
 
 function getLogoInfo(type) {
